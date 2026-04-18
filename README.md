@@ -1,99 +1,64 @@
-# SMB Vulnerability Scanner
+SMB Vulnerability Scanner
+Overview
+SMB Vulnerability Scanner is a lightweight Python tool designed to detect whether a target system is using SMBv1 and assess potential exposure to known security risks such as EternalBlue.
+This tool is intended for defensive security, educational purposes, and authorized security testing only.
 
-## Overview
+Features
+Detects if port 445 (SMB) is open
+Identifies SMB protocol version (SMBv1 vs SMBv2/v3)
+Supports anonymous and authenticated access
+Provides basic risk assessment
+Fast and lightweight scanning
+Disclaimer
 
-A lightweight Python tool to detect whether a target system is using SMBv1 and potentially exposed to known vulnerabilities such as EternalBlue.
+This tool is developed strictly for educational and authorized security testing purposes only.
+Any misuse, unauthorized scanning, or illegal activity is strictly prohibited.
 
-This project is designed for **defensive security, education, and authorized testing only**.
-
----
-
-## Features
-
-* Check if port 445 is open
-* Detect SMBv1 usage
-* Identify potential risk level
-* Simple and fast scanning
-
----
-
-## Disclaimer
-
-This tool is created for educational and authorized security testing purposes only.
-Any misuse of this tool is strictly prohibited.
-
----
-
-## 🛠️ Installation
-
-```bash
+Installation
 pip install -r requirements.txt
-```
-
----
-
-## Usage
-
-```bash
+Usage
 python smb_scanner.py
-```
 
-Then enter the target IP.
+Then enter:
+Target IP
+Optional username/password (or leave empty for anonymous mode)
+How It Works
 
----
-
-## How It Works
-
-The script:
-
-1. Checks if port 445 (SMB) is open
-2. Attempts an SMB connection
-3. Identifies the SMB dialect
-4. Determines if SMBv1 is enabled
-
----
-
-## Risk Explanation
-
-If SMBv1 is enabled, the system may be vulnerable to:
-
-* CVE-2017-0144 (EternalBlue)
-
-This vulnerability was widely exploited in major cyber attacks.
-
----
-
-## Mitigation
-
-* Disable SMBv1
-* Apply latest security patches
-* Restrict access to port 445
-* Use firewall rules
-
----
-
-## 📊 Example Output
-
-```
-[+] Scanning 192.168.1.10...
-[+] Port 445 is open
-[!] SMBv1 is ENABLED → Potentially VULNERABLE
-```
-
----
-
-## ⭐ Contribute
-
-Feel free to fork, improve, and submit pull requests.
-
-
-
+The tool performs the following steps:
+Checks if port 445 (SMB) is open
+Attempts SMB connection (anonymous or authenticated)
+Negotiates SMB dialect
+Determines SMB version (SMBv1 or SMBv2/v3)
+Reports risk level
 Security Context
-Systems using SMBv1 may be exposed to known vulnerabilities such as:
+
+Systems using SMBv1 may be exposed to critical vulnerabilities such as:
 
 CVE-2017-0144
+This vulnerability has been widely exploited in past global cyber attacks.
+
+Mitigation
+To reduce exposure risk:
+Disable SMBv1 protocol
+Apply latest security patches
+Restrict port 445 access via firewall
+Monitor exposed services regularly
+Example Output
+[+] Scanning 192.168.1.10...
+[+] Port 445 is open
+[+] SMB Version: SMBv1
+[!] Risk Level: HIGH (Deprecated protocol)
+Contributing
+
+Feel free to fork this project, improve functionality, and submit pull requests.
 
 Author
 Khaled Haimur
-https://www.youtube.com/results?search_query=haimur+cyber
-https://www.linkedin.com/feed/
+
+Social Links:
+
+YouTube: https://www.youtube.com/results?search_query=haimur+cyber
+LinkedIn: https://www.linkedin.com/feed/
+Note
+
+This project focuses on security visibility and exposure detection, not exploitation.
